@@ -4,15 +4,15 @@ pipeline {
         maven 'M2_HOME'
     }
     environment {
-    registry = '676334272140.dkr.ecr.us-east-1.amazonaws.com/devop_repository'						
+    registry = '948436781141.dkr.ecr.us-east-1.amazonaws.com/game'						
 
-    registryCredential = 'geovie19'
+    registryCredential = 'jenkins-study'
     dockerimage = ''
   }
     stages {
         stage('Checkout'){
             steps{
-                git branch: 'main', url: 'https://github.com/geovie19/Geolocation.git'
+                git branch: 'main', url: 'https://github.com/ernestoflav/battleboat.git'
             }
         }
         stage('Code Build') {
