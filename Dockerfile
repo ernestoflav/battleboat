@@ -1,4 +1,4 @@
-FROM FROM nginx
+FROM nginx
 MAINTAINER Ernestoflavie
 COPY ./Files /usr/share/nginx/html
 RUN sudo yum update -y
