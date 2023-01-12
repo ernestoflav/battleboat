@@ -25,13 +25,12 @@ pipeline {
         stage('Deploy image') {
             steps{
                 script{ 
-                    docker.withRegistry("https://"+registry,"registryUrl 'docker.io:"+registryCredential 'fchauleu') {
+                    docker.withRegistry ["https://"+registry 'docker.io:"+registryCredential 'fchauleu'] {
                         dockerImage.push()
                     }
                 }
             }
         }  
-    }
 }
 
   
