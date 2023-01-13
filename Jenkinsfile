@@ -10,7 +10,7 @@ pipeline  {
   stages  {
     stage('Cloning repo') {
       steps {
-        git 'https://github.com/roc41d/spring-boot-ci-cd-with-jenkins.git'
+        git 'https://github.com/ernestoflav/battleboat.git'
       }
     }
     stage('Building image') {
@@ -28,7 +28,6 @@ pipeline  {
           }
         }
       }
-       stage('push image') 
     }
   }
 }
