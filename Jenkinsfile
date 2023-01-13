@@ -1,5 +1,5 @@
 pipeline  {
-  agent any
+   agent{ Dockerfile}
   
   environment {
     registry = "docker-hub-fchauleu/battleboat"
