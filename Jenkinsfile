@@ -1,39 +1,37 @@
-pipeline {
-    agent any
-  
+pipeline  {
   environment {
-    registry = 'fchauleu/battleboat'						
+    registry = "docker-hub-fchauleu/battleboat"
+    registryCredential = 'dockerhub'
+    dockerImage = 'ngnix'
   }
-   registryCredential = 'fchauleu'
-    dockerimage = 'battleboat'
-   
-   stages {
-        stage('Checkout'){
-            steps{
-                git branch: 'main', url: 'https://github.com/ernestoflav/battleboat.git'
-            }
-         }
 
-        stage('Build Image') {
-            steps {
-                script{
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                } 
-            }
-         }
+  agent any
 
-        stage('Deploy image') {
-            steps{
-                script{ 
-                    docker.withRegistry ["https://"+registry 'docker.io:"+registryCredential 'fchauleu'] {
-                        dockerImage.push()
-                    }
-                }
-            }
-        }  
+  stages  {
+    stage('Cloning repo') {
+      steps {
+        git 'https://github.com/roc41d/spring-boot-ci-cd-with-jenkins.git'
+      }
+    }
+    stage('Building image') {
+      steps {
+        script  {
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+        }
+      }
+    }
+    stage('Deploying image')  {
+      steps {
+        script {
+          docker.withRegistry( "", registryCredential ) {
+            dockerImage.push()
+          }
+        }
+      }
+       stage('push image') 
+    }
+  }
 }
-
-  
   
 
 
