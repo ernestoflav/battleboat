@@ -1,4 +1,6 @@
 pipeline  {
+  agent any
+  
   environment {
     registry = "docker-hub-fchauleu/battleboat"
     registryCredential = 'dockerhub'
