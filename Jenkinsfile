@@ -1,11 +1,10 @@
 pipeline  {
+  agent any
   environment {
     registry = "docker-hub-fchauleu/battleboat"
-    registryCredential = 'dockerhub'
-    dockerImage = 'ngnix'
+    registryCredential = 'fchauleu'
+    dockerImage = ''
   }
-
-  agent any
 
   stages  {
     stage('Cloning repo') {
