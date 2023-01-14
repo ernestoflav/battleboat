@@ -9,7 +9,7 @@ pipeline  {
   stages  {
     stage('Cloning repo') {
       steps {
-        git 'https://github.com/ernestoflav/battleboat.git'
+        git branch: 'main', url:'https://github.com/ernestoflav/battleboat.git'
       }
     }
     stage('Building image') {
@@ -22,7 +22,7 @@ pipeline  {
     stage('Deploying image')  {
       steps {
         script {
-          docker.withRegistry( "", registryCredential ) {
+          docker.withRegistry('https://registry-1.docker.io/v2/','fchauleu') {
             dockerImage.push()
           }
         }
